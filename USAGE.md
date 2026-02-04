@@ -62,3 +62,47 @@ openclaw skill uninstall multi-agent-coordination
 ## 系统集成
 
 安装后，多智能体协调系统将完全集成到您的OpenClaw环境中，可以与其他技能和系统组件协同工作。
+
+## 高级用法
+
+### 创建自定义智能体
+
+您可以基于提供的智能体基类创建自己的智能体：
+
+```javascript
+const AgentBase = require('./agent_base');
+
+class CustomAgent extends AgentBase {
+  constructor(name, capabilities) {
+    super(name, capabilities);
+  }
+
+  async executeTask(task) {
+    // 实现您的自定义任务逻辑
+    console.log(`${this.name} 执行任务: ${task.type}`);
+    return { status: 'completed', result: 'success' };
+  }
+}
+```
+
+### 配置协调器
+
+中央协调器可以配置各种参数：
+
+```javascript
+const coordinator = new CentralCoordinator({
+  port: 3000,
+  maxAgents: 10,
+  taskTimeout: 30000,
+  healthCheckInterval: 5000
+});
+```
+
+## 故障排除
+
+如果遇到问题，请检查：
+
+1. Node.js 版本是否 ≥ 14.0.0
+2. 网络连接是否正常
+3. 端口是否被其他程序占用
+4. 权限是否足够执行相关操作

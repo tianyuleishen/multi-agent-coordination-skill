@@ -69,4 +69,4 @@ The system consists of several key components:
 
 ## Contributing
 
-Contributions are welcome! Please see the original repository for contribution guidelines.
+Contributions are welcome! Please feel free to submit a Pull Request.
