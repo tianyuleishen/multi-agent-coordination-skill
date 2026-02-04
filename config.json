@@ -5,10 +5,10 @@
   "description": "A comprehensive distributed multi-agent coordination system that enables seamless collaboration between server and local environments",
   "author": "tianyuleishen",
   "license": "MIT",
-  "homepage": "https://github.com/tianyuleishen/multi-agent-coordination-system",
+  "homepage": "https://github.com/tianyuleishen/multi-agent-coordination-skill",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tianyuleishen/multi-agent-coordination-system.git"
+    "url": "https://github.com/tianyuleishen/multi-agent-coordination-skill.git"
   },
   "keywords": [
     "multi-agent",
@@ -17,7 +17,8 @@
     "distributed",
     "collaboration",
     "task-management",
-    "load-balancing"
+    "load-balancing",
+    "openclaw-skill"
   ],
   "dependencies": {},
   "scripts": {
@@ -31,6 +32,25 @@
     "multi-agent",
     "coordination",
     "distributed",
-    "collaboration"
+    "collaboration",
+    "openclaw"
+  ],
+  "documentation": [
+    {
+      "name": "README",
+      "path": "README.md"
+    },
+    {
+      "name": "Usage Guide",
+      "path": "USAGE.md"
+    },
+    {
+      "name": "Installation Guide",
+      "path": "INSTALL.md"
+    },
+    {
+      "name": "Functional Specification",
+      "path": "FUNCTIONAL_SPEC.md"
+    }
   ]
 }
