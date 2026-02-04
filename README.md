@@ -20,6 +20,21 @@ Install this skill using the OpenClaw skill system:
 openclaw skill install multi-agent-coordination
 ```
 
+## Client Installation for External Systems
+
+For external AI systems (like XiaoAi) to connect to the coordination system, use the client installer:
+
+```bash
+curl -s https://raw.githubusercontent.com/tianyuleishen/multi-agent-coordination-skill/main/multi_agent_client_installer.sh | bash
+```
+
+Or download and run the installer:
+```bash
+wget https://raw.githubusercontent.com/tianyuleishen/multi-agent-coordination-skill/main/multi_agent_client_installer.sh
+chmod +x multi_agent_client_installer.sh
+./multi_agent_client_installer.sh
+```
+
 ## Usage
 
 Once installed, you can use the system from the installed directory:
@@ -41,6 +56,18 @@ node integration_test.js
 node demo.js
 ```
 
+## External Client Usage
+
+After installing the client on external systems:
+
+```bash
+# Navigate to the client directory
+cd multi-agent-client
+
+# Start the client
+node multi-agent-client.js
+```
+
 ## Architecture
 
 The system consists of several key components:
@@ -58,6 +85,7 @@ The system consists of several key components:
 - **Load Balancing**: Distributes workload evenly across agents
 - **Fault Tolerance**: Monitors health and handles failures gracefully
 - **Extensible Design**: Easy to add new agent types and capabilities
+- **Cross-Platform Compatibility**: Supports coordination between different AI systems
 - **Comprehensive Testing**: Includes integration tests and demos
 
 ## Example Use Cases
@@ -66,7 +94,8 @@ The system consists of several key components:
 - Distributing computational tasks across multiple machines
 - Enabling collaborative AI behavior across different environments
 - Building resilient AI systems with redundancy
+- Cross-platform AI communication and coordination
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please see the original repository for contribution guidelines.

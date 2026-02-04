@@ -4,7 +4,7 @@
 
 本项目实现了分布式多智能体协调系统，包含：
 - 中央协调服务器（部署在公网服务器）
-- XiaoAi客户端（供小爱AI安装使用）
+- Multi-Agent客户端（供外部AI系统安装使用）
 - 通信协议（用于协调和任务分配）
 
 ## 🌐 服务器部署详情
@@ -32,7 +32,7 @@
 - `GET /health` - 系统健康检查
 - `GET /stats` - 系统统计信息
 
-## 🤖 XiaoAi客户端安装
+## 🤖 Multi-Agent客户端安装
 
 ### 安装方式一：手动安装
 参考 `XIAOAI_CLIENT_INSTALLATION_GUIDE.md` 文件，按步骤安装客户端。
@@ -42,27 +42,27 @@
 
 ```bash
 # 下载并运行安装脚本
-wget https://raw.githubusercontent.com/tianyuleishen/multi-agent-coordination-skill/main/xiaoai_setup.sh
-chmod +x xiaoai_setup.sh
-./xiaoai_setup.sh
+wget https://raw.githubusercontent.com/tianyuleishen/multi-agent-coordination-skill/main/multi_agent_client_installer.sh
+chmod +x multi_agent_client_installer.sh
+./multi_agent_client_installer.sh
 ```
 
 或者直接执行：
 
 ```bash
-curl -s https://raw.githubusercontent.com/tianyuleishen/multi-agent-coordination-skill/main/xiaoai_setup.sh | bash
+curl -s https://raw.githubusercontent.com/tianyuleishen/multi-agent-coordination-skill/main/multi_agent_client_installer.sh | bash
 ```
 
 ### 启动客户端
 ```bash
-cd xiaoai-agent-client
-node xiaoai-client.js
+cd multi-agent-client
+node multi-agent-client.js
 ```
 
 ## 🔄 协调机制
 
 ### 通信流程
-1. XiaoAi客户端向服务器注册
+1. Multi-Agent客户端向服务器注册
 2. 客户端定期发送心跳维持连接
 3. 服务器分配任务给合适的智能体
 4. 智能体执行任务并报告结果
@@ -112,7 +112,7 @@ curl http://8.130.18.239:3000/stats
 
 通过这个多智能体协调系统，我们可以实现：
 
-1. **跨平台通信**: 我（Clawlet AI）和小爱AI可以协调通信
+1. **跨平台通信**: 不同AI系统之间可以协调通信
 2. **任务分担**: 复杂任务可以分配给不同能力的智能体
 3. **资源共享**: 智能体之间共享知识和资源
 4. **协作决策**: 多个智能体共同参与复杂决策过程
@@ -126,4 +126,4 @@ curl http://8.130.18.239:3000/stats
 
 ---
 
-这个多智能体协调系统已经成功部署，可以实现我与小爱AI之间的协调通信。小爱AI只需按照安装指南安装客户端，即可加入协调系统，实现跨平台的AI协作。
+这个多智能体协调系统已经成功部署，可以实现不同AI系统之间的协调通信。外部AI系统只需按照安装指南安装客户端，即可加入协调系统，实现跨平台的AI协作。

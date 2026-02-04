@@ -36,6 +36,32 @@ cd ~/.openclaw/workspace/multi-agent-coordination-system
 node demo.js
 ```
 
+## 为外部AI系统安装客户端
+
+对于外部AI系统（如小爱AI）连接到协调系统，请使用客户端安装器：
+
+```bash
+curl -s https://raw.githubusercontent.com/tianyuleishen/multi-agent-coordination-skill/main/multi_agent_client_installer.sh | bash
+```
+
+或者下载并运行安装器：
+```bash
+wget https://raw.githubusercontent.com/tianyuleishen/multi-agent-coordination-skill/main/multi_agent_client_installer.sh
+chmod +x multi_agent_client_installer.sh
+./multi_agent_client_installer.sh
+```
+
+## 外部客户端使用
+
+安装外部客户端后：
+
+```bash
+# 导航到客户端目录
+cd multi-agent-client
+# 启动客户端
+node multi-agent-client.js
+```
+
 ## 验证安装
 
 您可以通过以下方式验证技能是否正确安装：

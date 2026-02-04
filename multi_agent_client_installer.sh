@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# XiaoAi Agent Client - Quick Setup Script
-# This script automates the installation of the XiaoAi client for multi-agent coordination
+# Multi-Agent Coordination System - Client Installer
+# This script automates the installation of a client for multi-agent coordination system
 
-echo "🤖 XiaoAi Agent Client - Quick Setup"
-echo "====================================="
+echo "🤖 Multi-Agent Coordination Client - Quick Setup"
+echo "================================================"
 
 # Check if Node.js is installed
 if ! command -v node &> /dev/null; then
@@ -32,7 +32,7 @@ fi
 echo "✅ npm is available"
 
 # Create project directory
-PROJECT_DIR="xiaoai-agent-client"
+PROJECT_DIR="multi-agent-client"
 if [ -d "$PROJECT_DIR" ]; then
     echo "⚠️  Directory $PROJECT_DIR already exists. Removing..."
     rm -rf "$PROJECT_DIR"
@@ -51,20 +51,20 @@ echo "📥 Installing required dependencies..."
 npm install axios express ws cors > /dev/null 2>&1
 
 # Create the client JavaScript file
-cat > xiaoai-client.js << 'EOF'
+cat > multi-agent-client.js << 'EOF'
 const axios = require('axios');
 const WebSocket = require('ws');
 
-class XiaoAiAgent {
+class MultiAgentClient {
   constructor(options = {}) {
-    this.id = options.id || `xiaoai-${Date.now()}`;
-    this.name = options.name || 'XiaoAi-Agent';
+    this.id = options.id || `multi-agent-client-${Date.now()}`;
+    this.name = options.name || 'Multi-Agent-Client';
     this.coordinatorUrl = options.coordinatorUrl || 'http://8.130.18.239:3000';
     this.capabilities = options.capabilities || ['communication', 'information-processing', 'task-execution'];
     this.status = 'offline';
     this.heartbeatInterval = null;
     
-    console.log(`🤖 XiaoAi Agent initialized: ${this.name} (${this.id})`);
+    console.log(`🤖 Multi-Agent Client initialized: ${this.name} (${this.id})`);
   }
   
   async register() {
@@ -196,7 +196,7 @@ class XiaoAiAgent {
       processedAt: new Date().toISOString(),
       result: `Processed information query: ${data.query}`,
       data: {
-        source: 'XiaoAi knowledge base',
+        source: 'Multi-Agent Client knowledge base',
         confidence: 0.95,
         timestamp: new Date().toISOString()
       }
@@ -215,7 +215,7 @@ class XiaoAiAgent {
       processedAt: new Date().toISOString(),
       result: `Coordinated task: ${data.description || data.action}`,
       coordinationResult: {
-        participants: ['XiaoAi-Agent'],
+        participants: ['Multi-Agent-Client'],
         status: 'coordinated',
         timestamp: new Date().toISOString()
       }
@@ -306,22 +306,22 @@ class XiaoAiAgent {
   }
   
   async start() {
-    console.log('🚀 Starting XiaoAi Agent...');
+    console.log('🚀 Starting Multi-Agent Client...');
     
     const registered = await this.register();
     if (registered) {
-      console.log(`✅ XiaoAi Agent is now online and connected to coordinator at ${this.coordinatorUrl}`);
+      console.log(`✅ Multi-Agent Client is now online and connected to coordinator at ${this.coordinatorUrl}`);
       
       // 设置优雅退出
       process.on('SIGINT', async () => {
-        console.log('\\n🛑 Shutting down XiaoAi Agent...');
+        console.log('\\n🛑 Shutting down Multi-Agent Client...');
         await this.deregister();
         process.exit(0);
       });
       
       return true;
     } else {
-      console.error('❌ Failed to start XiaoAi Agent');
+      console.error('❌ Failed to start Multi-Agent Client');
       return false;
     }
   }
@@ -329,10 +329,10 @@ class XiaoAiAgent {
 
 // 使用示例
 async function main() {
-  // 创建小爱AI客户端实例
-  const xiaoAiAgent = new XiaoAiAgent({
-    id: `xiaoai-agent-${Date.now()}`,
-    name: 'XiaoAi-Agent',
+  // 创建多智能体协调客户端实例
+  const multiAgentClient = new MultiAgentClient({
+    id: `multi-agent-client-${Date.now()}`,
+    name: 'Multi-Agent-Client',
     coordinatorUrl: 'http://8.130.18.239:3000', // 中央协调服务器地址
     capabilities: [
       'communication',           // 通信能力
@@ -344,20 +344,20 @@ async function main() {
   });
   
   // 启动客户端
-  const started = await xiaoAiAgent.start();
+  const started = await multiAgentClient.start();
   
   if (started) {
-    console.log('\\n🎉 XiaoAi Agent is running and connected to the multi-agent coordination system!');
-    console.log('The agent will now listen for tasks from the coordinator and participate in coordination activities.');
+    console.log('\\n🎉 Multi-Agent Client is running and connected to the multi-agent coordination system!');
+    console.log('The client will now listen for tasks from the coordinator and participate in coordination activities.');
     
     // 示例：提交一个通信任务
     setTimeout(async () => {
       try {
-        await xiaoAiAgent.submitTask(
+        await multiAgentClient.submitTask(
           'communication', 
           { 
-            message: 'Hello from XiaoAi! Ready to coordinate with other agents.',
-            sender: 'XiaoAi-Agent',
+            message: 'Hello from Multi-Agent Client! Ready to coordinate with other agents.',
+            sender: 'Multi-Agent-Client',
             timestamp: new Date().toISOString()
           },
           { priority: 'high' }
@@ -374,19 +374,19 @@ if (require.main === module) {
   main().catch(console.error);
 }
 
-module.exports = XiaoAiAgent;
+module.exports = MultiAgentClient;
 EOF
 
 # Create package.json
 cat > package.json << 'EOF'
 {
-  "name": "xiaoai-agent-client",
+  "name": "multi-agent-client",
   "version": "1.0.0",
-  "description": "XiaoAi client for multi-agent coordination system",
-  "main": "xiaoai-client.js",
+  "description": "Multi-Agent client for multi-agent coordination system",
+  "main": "multi-agent-client.js",
   "scripts": {
-    "start": "node xiaoai-client.js",
-    "dev": "nodemon xiaoai-client.js"
+    "start": "node multi-agent-client.js",
+    "dev": "nodemon multi-agent-client.js"
   },
   "dependencies": {
     "axios": "^1.6.0",
@@ -395,30 +395,28 @@ cat > package.json << 'EOF'
     "cors": "^2.8.5"
   },
   "keywords": [
-    "xiaomi",
-    "xiaomi-ai",
-    "xiaomi-assistant",
     "multi-agent",
     "coordination",
     "ai",
-    "communication"
+    "communication",
+    "collaboration"
   ],
-  "author": "XiaoAi Team",
+  "author": "Multi-Agent Coordination Team",
   "license": "MIT"
 }
 EOF
 
 # Make the client script executable
-chmod +x xiaoai-client.js
+chmod +x multi-agent-client.js
 
-echo "✅ XiaoAi Agent Client has been set up successfully!"
+echo "✅ Multi-Agent Coordination Client has been set up successfully!"
 echo ""
 echo "📋 Next steps:"
-echo "1. cd xiaoai-agent-client"
-echo "2. node xiaoai-client.js"
+echo "1. cd multi-agent-client"
+echo "2. node multi-agent-client.js"
 echo ""
 echo "🌐 The client will connect to the coordinator server at http://8.130.18.239:3000"
-echo "🔄 Once connected, XiaoAi will participate in multi-agent coordination"
+echo "🔄 Once connected, the client will participate in multi-agent coordination"
 echo ""
 echo "💡 Tip: You can also run 'npm start' to launch the client"
 EOF
